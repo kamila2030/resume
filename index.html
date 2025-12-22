@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Камила Усубалиева - Студент-разработчик</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<!-- Добавьте эти строки перед закрывающим </head> -->
+<script src="https://unpkg.com/@angular/core@17/bundles/core.umd.js"></script>
+<script src="https://unpkg.com/@angular/common@17/bundles/common.umd.js"></script>
+<script src="https://unpkg.com/@angular/compiler@17/bundles/compiler.umd.js"></script>
+<script src="https://unpkg.com/@angular/platform-browser@17/bundles/platform-browser.umd.js"></script>
+<script src="https://unpkg.com/@angular/platform-browser-dynamic@17/bundles/platform-browser-dynamic.umd.js"></script>
+<body>
+    <!-- Навигационная панель -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">У.КАМИЛА</a>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Главная</a>
+                <a href="#courses" class="nav-link">Курсы</a>
+                <a href="#projects" class="nav-link">Проекты</a>
+                <a href="#practice" class="nav-link">Практика</a>
+                <a href="#selfdev" class="nav-link">Саморазвитие</a>
+                <a href="#about" class="nav-link">Обо мне</a>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Главная секция / Шапка -->
+    <header id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-image">
+                <img src="images/avatar.jpg" alt="Камила Усубалиева" class="profile-photo">
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-name">Усубалиева Камила Кенешбековна</h1>
+                <h2 class="hero-title">Студент: веб-разработчик</h2>
+                <p class="hero-pitch">Создаю надёжные веб-приложения и автоматизирую инфраструктуру. Умею учиться быстро и решать различные задачи.</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary">Смотреть проекты</a>
+                    <a href="#skills" class="btn btn-secondary">Изучить навыки</a>
+                </div>
+            </div>
+        </div>
+    </header> `
+        <div class="filter-buttons">
+          <button *ngFor="let filter of filters" 
+                  (click)="filterCourses(filter.type)"
+                  [class.active]="activeFilter === filter.type">
+          </button>
+        </div>
+        
+        <div class="courses-grid">
+          <div *ngFor="let course of filteredCourses" 
+               class="course-card"
+               [class.hidden]="!isCourseVisible(course)">
+            <!-- содержимое карточки -->
+          </div>
+        </div>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+        <!-- Раздел: Курсы -->
+        <section id="courses" class="section">
+            <div class="container">
+                <h2 class="section-title">Курсы и сертификаты</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="sber">Яндекс</button>
+                    <button class="filter-btn" data-filter="yandex">MTC</button>
+                    <button class="filter-btn" data-filter="vk">VK Образование</button>
+                </div>
+                <div class="courses-grid">
+                
+                    <!-- Карточка курса 2 -->
+                    <div class="course-card" data-category="yandex">
+                        <div class="course-header">
+                            <div class="course-platform">Яндекс</div>
+                            <h3 class="course-title">Frontend</h3>
+                        </div>
+                        <div class="course-skills">
+                            <span class="skill-tag">html</span>
+                            <span class="skill-tag">css</span>
+                            <span class="skill-tag">python</span>
+                        </div>
+                        <div class="course-certificate">
+                            <img src="images/yandex.jpg" alt="Сертификат Яндекс" class="certificate-img" data-certificate="cert2">
+                        </div>
+                        <a href="images/front.jpg" class="course-link" target="_blank">Посмотреть сертификат Frontend</a>
+                        <a href="images/python.jpg" class="course-link" target="_blank">Посмотреть сертификат Python</a>
+                    </div>
+                    
+                    <!-- Карточка курса 3 -->
+                    <div class="course-card" data-category="vk">
+                        <div class="course-header">
+                            <div class="course-platform">MTC</div>
+                            <h3 class="course-title">True Tech</h3>
+                        </div>
+                        <div class="course-skills">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">css</span>
+                        </div>
+                        <div class="course-certificate">
+                            <img src="images/mtc.jpg" alt="Сертификат mtc" class="certificate-img" data-certificate="cert3">
+                        </div>
+                        <a href="images/true.jpg" class="course-link" target="_blank">Посмотреть сертификат</a>
+                    </div>
+                    
+                    <!-- Карточка курса 4 -->
+                    <div class="course-card" data-category="future">
+                        <div class="course-header">
+                            <div class="course-platform">Wk education</div>
+                            <h3 class="course-title">SMM и degital-маркетинг</h3>
+                        </div>
+                        <div class="course-skills">
+                    
+                        </div>
+                        <div class="course-certificate">
+                            <img src="images/wk.jpg" alt="Сертификат wk" class="certificate-img" data-certificate="cert4">
+                        </div>
+                        <a href="images/smm.jpg" class="course-link" target="_blank">Посмотреть сертификат</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Раздел: Проекты -->
+        <section id="projects" class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">Мои проекты</h2>
+                <div class="projects-grid">
+                    <!-- Проект 1 -->
+                    <div class="project-card">
+                        <h3 class="project-title">Документооборот в команде "Импульс"</h3>
+                        <p class="project-description">Реализация системы документооборота для эффективного управления внутренней документацией команды разработки.</p>
+                        <div class="project-role">
+                            <strong>Роль:</strong>Дизайнер
+                        </div>
+                        <div class="project-tasks">
+                            <strong>Выполненные задачи:</strong> проверка документов, работа над визульной новеллой твайн.
+                        </div>
+                    
+                        <div class="project-links">
+                            <a href="https://kamila2030.github.io/impuls/implus.html" class="project-link" target="_blank"><i class="fab fa-github"></i> Репозиторий</a>
+                            
+                        </div>
+                    </div>
+                    
+                    <!-- Проект 2 -->
+                    <div class="project-card">
+                        <h3 class="project-title">Проект для конкурса «Система»</h3>
+                        <p class="project-description">Разработка инновационной технологии для проекта уютный город.</p>
+                        <div class="project-role">
+                            <strong>Роль: Проектировщик инфраструктуры</strong> 
+                        </div>
+                        <div class="project-tasks">
+                            <strong>Выполненные задачи:</strong> проектирование технологий, подготовка презентации.
+                        </div>
+                       
+                        <div class="project-links">  
+                            <a href="https://docs.google.com/presentation/d/1QKPgJk8iY_Zid5pcQVC4MVof0ELL9iebvcjxNdbjKVE/edit?usp=drive_link" class="project-link" target="_blank"><i class="fas fa-folder"></i> Презентация</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Раздел: Практика -->
+        <section id="practice" class="section">
+            <div class="container">
+                <h2 class="section-title">Производственная практика</h2>
+                <div class="practice-content">
+                    <div class="practice-text">
+                        <p>Прохождение производственной практики в <strong>ГБПОУ МО «Люберецкий техникум имени Ю.А. Гагарина»</strong> по специальности 09.02.07 «Информационные системы и программирование».</p>
+                        <p>В ходе практики выполнялись следующие задачи:</p>
+                        <ul class="practice-list">
+                            <li>Нумеровка страниц</li>
+                            <li>Сбор листов по 250 штук в папку</li>
+                            <li>Опись по данным докуметов</li>
+                            <li>Сшивание папок</li>
+                            <li>Внесенние документов в архив</li>
+                        </ul>
+                        <p><strong>Используемые инструменты:</strong> Карандаш, Ручка, Клей, Листы, Маркеры, Резинки.</p>
+                    </div>
+                    <div class="practice-interactive">
+                        <h3>Интерактивный отчёт о практике</h3>
+                        <p>Погрузитесь в опыт прохождения практики через интерактивную новеллу, созданную в Twine:</p>
+                        <a href="https://kamila2030.github.io/fotki/Praktika.html" class="btn btn-twinе" target="_blank">
+                            <i class="fas fa-gamepad"></i> Запустить интерактивную новеллу на Twine
+                        </a>
+                        <div class="practice-images">
+                            <div class="practice-img-container">
+                                <img src="images/PP.jpg" alt="Практика фото 1">
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Раздел: Саморазвитие -->
+        <section id="selfdev" class="section section-dark">
+            <div class="container">
+                <h2 class="section-title">Карта саморазвития</h2>
+                <div class="roadmap">
+                    <!-- Frontend направление -->
+                    <div class="roadmap-branch">
+                        <div class="branch-header">
+                            <h3 class="branch-title">Frontend</h3>
+                            <div class="branch-status">В процессе</div>
+                        </div>
+                        <div class="branch-skills">
+                            <div class="skill-item" data-level="advanced">
+                                <span class="skill-name">HTML/CSS</span>
+                                <div class="skill-level">
+                                    <div class="level-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-level="intermediate">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-level">
+                                    <div class="level-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-item" data-level="learning">
+                                <span class="skill-name">Angular</span>
+                                <div class="skill-level">
+                                    <div class="level-bar" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <img src="images/fr.jpg" alt="навыки frontend-разработке">
+                   
+                    
+                   
+                    
+                    <!-- Генеративные модели -->
+                    <div class="roadmap-branch">
+                        <div class="branch-header">
+                            <h3 class="branch-title">Генеративные модели</h3>
+                            <div class="branch-status">Изучаю</div>
+                        </div>
+                        <div class="branch-skills">
+                            <div class="skill-item" data-level="intermediate">
+                                <span class="skill-name">Промпт-инжиниринг</span>
+                                <div class="skill-level">
+                                    <div class="level-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-level="learning">
+                                <span class="skill-name">GigaChat</span>
+                                <div class="skill-level">
+                                    <div class="level-bar" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item" data-level="learning">
+                                <span class="skill-name">Kandinsky</span>
+                                <div class="skill-level">
+                                    <div class="level-bar" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="images/gen.jpg" alt="навыки generated">
+                 
+            </div>
+        </section>
+
+        <!-- Раздел: Обо мне -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">Обо мне</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Профессиональная биография</h3>
+                        <img src="images/logo.jpg" alt="logo" width="100" height="auto">
+                        <p>Я учусь в <strong>ГБПОУ МО «Люберецкий техникум имени Ю.А. Гагарина»</strong> по специальности 09.02.07 «Информационные системы и программирование».</p>
+                        <p>Заинтересован в frontend-разработке, информационной безопасности и генеративных технологиях. Стремлюсь к постоянному профессиональному развитию и изучению новых технологий.</p>
+                        
+                        <h3 id="skills">Навыки и технологии</h3>
+                        <div class="skills-categories">
+                            <div class="skills-category">
+                                <h4>Языки программирования</h4>
+                                <div class="skills-list">
+                                    <span class="skill-badge">JavaScript</span>
+                                    <span class="skill-badge">Python</span>
+                                    <span class="skill-badge">Bash</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skills-category">
+                                <h4>Инструменты и технологии</h4>
+                                <div class="skills-list">
+                                    <span class="skill-badge">Angular</span>
+                                    <span class="skill-badge">GitHub</span>
+                                    <span class="skill-badge">Deepseek</span>
+                                    <span class="skill-badge">GigaChat</span>
+                                    <span class="skill-badge">Шедеврум</span>
+                                    <span class="skill-badge">ChatGpt</span>
+                                </div>
+                            </div>
+                            
+                            <div class="skills-category">
+                                <h4>Soft skills</h4>
+                                <div class="skills-list">
+                                    <span class="skill-badge soft">Общение в людьми</span>
+                                    <span class="skill-badge soft">Дисциплина</span>
+                                    <span class="skill-badge soft">Работа в команде</span>
+                                    <span class="skill-badge soft">Адаптивность</span>
+                                    <span class="skill-badge soft">Решение проблем</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-links">
+                        <h3>Ссылки и контакты</h3>
+                        <div class="social-links">
+                            <a href="https://github.com/kamila2030" class="social-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub (репозитории и активность)</span>
+                            </a>
+                            <a href="https://ru.yougile.com/board/y4ppt5nmy1fj" class="social-link" target="_blank">
+                                <i class="fas fa-project-diagram"></i>
+                                <span> yougile-(доска задач)</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>© 2025 Усубалиева Камила, ГБПОУ МО «Люберецкий техникум имени Героя Советского Союза, лётчика–космонавта Ю.А. Гагарина»</p>
+                    <p>Год окончания обучения: 2025</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
