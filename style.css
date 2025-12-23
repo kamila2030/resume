@@ -356,4 +356,22 @@ body {
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
     gap: 30px;
+
+/* Светлая тема */
+.light-theme {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.dark-theme {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+#theme-toggle {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
